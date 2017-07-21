@@ -1,6 +1,6 @@
 #ifndef XPOSED_H_
 #define XPOSED_H_
-#define SYSTEMLESS_PATH "/su/xposed"
+#define SYSTEMLESS_PATH "/magisk/xposed"
 #include "xposed_shared.h"
 
 #define XPOSED_PROP_FILE "/system/xposed.prop"
