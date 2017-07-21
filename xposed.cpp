@@ -247,7 +247,7 @@ int getSdkVersion() {
 
 /** Check whether Xposed is disabled by a flag file */
 bool isDisabled() {
-    if (zygote_access(XPOSED_LOAD_BLOCKER, F_OK) == 0) {
+    if (zygote_access(XPOSED_LOAD_BLOCKER, F_OK) == 0 && zygote_access(SAMSUNG_TW_JAR, F_OK) != 0) {
         ALOGE("Found %s, not loading Xposed", XPOSED_LOAD_BLOCKER);
         return true;
     }
@@ -268,7 +268,7 @@ bool isSafemodeDisabled() {
     if (zygote_access(XPOSED_SAFEMODE_DISABLE, F_OK) == 0)
         return true;
     else
-        return false;
+        return (zygote_access(SAMSUNG_TW_JAR, F_OK) == 0);
 }
 
 /** Check whether the delay for safemode should be skipped. */
